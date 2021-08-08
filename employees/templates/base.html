@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <title>Employee Management System</title>
+  </head>
+  <body>
+    <main>
+        <div class="container py-4">
+          {% include 'partials/_header.html' %}
+          <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Employee Database</h1>
+                <p class="col-md-8 fs-4">Python Django project for implementing CRUD operations.</p>
+                <hr>
+                {% block content %}{% endblock %}
+            </div>
+          </div>
+          {% include 'partials/_footer.html' %}
+        </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if employees %}
+    <table class="table table-borderless text-center mx-auto" style="width: 70%">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Position</th>
+                <th scope="col">
+                    <a class="btn btn-outline-success" href="{% url 'create' %}">
+                        <i class="fa fa-plus"></i> Add new
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td scope="row">{{ employee.name }} - {{ employee.emp_code }}</td>
+                    <td scope="row">{{ employee.phone }}</td>
+                    <td scope="row">{{ employee.position }}</td>
+                    <td scope="row" class="d-flex justify-content-center">
+
+                        <!-- Delete employee -->
+                        <form action="{% url 'delete' employee.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="text-danger btn pt-0">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                        
+                        <!-- Edit employee -->
+                        <a href="{% url 'update' employee.id %}" class="text-decoration-none text-secondary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p class="lead d-inline">There are currently no employees</p>
+        <a class="btn btn-outline-success d-inline" href="{% url 'create' %}">
+            <i class="fa fa-plus"></i> Add new
+        </a>
+    {% endif %}
+{% endblock %}
